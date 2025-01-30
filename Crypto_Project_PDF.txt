@@ -1,0 +1,35 @@
+﻿Shan Palway
+48806698
+CS Advanced Python 
+Advanced Python 
+AI Crypto Currency Evaluation Project
+
+
+Jupiter Notebook Link (in case you can't get .py to work on your environment)
+
+Explanation: My Crypto Coin Summarizer will take an input of the ticker symbol for various cryptos such as XRP, BTC, XLM, and even more uncommon ones such as DOGE, SHIB, TRX. The input will then be fed into GPT to provide quick summarized information of the coin that always follows this format:
+
+Crypto Details:
+
+
+Developer: Ripple Labs  
+Price: $1.20  
+Circulating Supply: 46,468,231,763 XRP  
+Market Cap: $55,834,469,304  
+Important events:  
+- Ripple partners with major financial institutions for cross-border payments  
+- XRP used in various blockchain projects and payment solutions
+
+
+Example Outputs: 
+  
+
+
+Errors During Development: I encountered a few errors when making this LLM interact with Crypto Data. The main issue is, sometimes for information such as Market Cap or Circulating supply, the model would simply return the definition of these terms instead of giving accurate information. For the most part, the model is still extremely accurate and gives relevant information regarding the coin. It even goes as far as referencing Elon Musk and other figures when mentioning important events surrounding various crypto. 
+
+I also ran into a few coding errors. ChatGPT had migrated its API referencing which forced me to use the new migrated API information. This was a bit tricky to implement however I found quite a bit of help looking at the updated GitHub Manual. After the code was updated, I was able to fix the code with the manual guide. 
+
+
+Another coding issue I ran into was setting up the client to take inputs and give outputs. This was mainly because the newly migrated API required a completely different structure for setting up clients. Once this was properly implemented. My code worked like a charm!
+
+Overall, this was a very exciting project to work on. In the future, I plan to build a UI around it so I can add it as a professional project to my LinkedIn. Seeing the output work for the first time was one of the best feelings I have had during this entire school year. An amazing conclusion to a very fun and engaging semester.

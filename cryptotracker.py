@@ -11,24 +11,34 @@ Original file is located at
 !pip install openai
 !pip install --upgrade openai
 !pip show openai
+!pip install python-dotenv
 
-from openai import OpenAI
-import httpx
+import os
+import requests
+import openai
+from dotenv import load_dotenv
+
+# Load environment variables from a .env file
+load_dotenv()
 
 class CryptoAssistant:
-    """A class to handle cryptocurrency information retrieval using OpenAI's API."""
+    """A class to handle cryptocurrency information retrieval using OpenAI's API and CoinMarketCap API."""
 
     def __init__(self):
         """Initialize the CryptoAssistant with proper client configuration."""
-        http_client = httpx.Client()
-        self.client = OpenAI(
-            api_key="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",  #Replace with your own GPT api key.
-            http_client=http_client
-        )
+        api_key = os.getenv("OPENAI_API_KEY")
+        cmc_api_key = os.getenv("CMC_API_KEY")
+        if not api_key:
+            raise ValueError("OpenAI API key not found. Ensure the .env file is correctly set and loaded.")
+        if not cmc_api_key:
+            raise ValueError("CoinMarketCap API key not found. Ensure the .env file is correctly set and loaded.")
+
+        self.client = openai.OpenAI(api_key=api_key)
+        self.cmc_api_key = cmc_api_key
 
     def get_crypto_details(self, ticker: str) -> str:
         """
-        Fetch cryptocurrency details using the OpenAI API.
+        Fetch real-time cryptocurrency details using CoinMarketCap API and OpenAI API.
 
         Args:
             ticker (str): Cryptocurrency ticker symbol (e.g., BTC, ETH)
@@ -36,28 +46,49 @@ class CryptoAssistant:
         Returns:
             str: Formatted cryptocurrency information
         """
+        cmc_url = f"https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol={ticker}&convert=USD"
+        headers = {"X-CMC_PRO_API_KEY": self.cmc_api_key, "Accept": "application/json"}
+        try:
+            response = requests.get(cmc_url, headers=headers)
+            response.raise_for_status()
+            data = response.json()["data"][ticker]
+            price = f"{data['quote']['USD']['price']:.2f} USD"
+            market_cap = f"{data['quote']['USD']['market_cap']:.2f} USD"
+            circulating_supply = f"{data['circulating_supply']:.2f} {ticker}"
+        except Exception as e:
+            print(f"Error fetching real-time data: {str(e)}")
+            price = "Unavailable"
+            market_cap = "Unavailable"
+            circulating_supply = "Unavailable"
+
         prompt = f"""
         Provide information about the cryptocurrency {ticker} in exactly this format:
 
         Developer: "Name of the developer or team behind the coin"
-        Price: "Current price of the cryptocurrency"
-        Circulating Supply: "Total number of coins currently in circulation"
-        Market Cap: "Market capitalization of the coin"
+        Price: "{price}"
+        Circulating Supply: "{circulating_supply}"
+        Market Cap: "{market_cap}"
         Important events:
         - "Brief description of a notable event"
         - "Another key event related to the coin"
+        Recent News:
+        - "Latest news headline and summary"
+        - "Another significant news event"
+        Future Analysis:
+        - "Predicted trends based on market behavior and global events"
+        - "Potential risks and opportunities"
 
         Please ensure all responses strictly follow this format.
         """
 
         try:
             response = self.client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4-turbo",
                 messages=[
                     {"role": "system", "content": "You are a cryptocurrency assistant. Always provide information in the exact format specified."},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=300,
+                max_tokens=500,
                 temperature=0.7
             )
 
@@ -72,15 +103,17 @@ def main():
     print("Welcome to the Cryptocurrency Assistant!")
     print("Enter 'quit' to exit the program.")
 
+    assistant = CryptoAssistant()
+
     while True:
         ticker_symbol = input("\nEnter the cryptocurrency ticker symbol (e.g., XRP, BTC, ETH): ").strip().upper()
 
         if ticker_symbol.lower() == 'quit':
-            print("Thank you for using the Cryptocurrency Assistant!")
+            print("Thank you for using the CryptoTracker Assistant!")
+            print("https://www.linkedin.com/in/apalway/")
             break
 
         try:
-            assistant = CryptoAssistant()
             details = assistant.get_crypto_details(ticker_symbol)
             print("\nCrypto Details:\n")
             print(details)

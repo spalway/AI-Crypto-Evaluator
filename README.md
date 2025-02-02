@@ -24,7 +24,7 @@ This seamless integration with GPT allows the AI Crypto Evaluator to function as
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/yourusername/ai-crypto-evaluator.git
-   cd ai-crypto-evaluator
+   cd cryptotracker.py
    ```
 
 2. **Install Dependencies**  
@@ -35,7 +35,7 @@ This seamless integration with GPT allows the AI Crypto Evaluator to function as
 
 3. **Run the Program**
    ```bash
-   python ai_crypto_evaluator.py
+   python cryptotracker.py
    ```
 
 ---
@@ -52,7 +52,7 @@ This seamless integration with GPT allows the AI Crypto Evaluator to function as
 
 1. Run the script:
    ```bash
-   python ai_crypto_evaluator.py
+   python cryptotracker.py
    ```
 
 2. Enter the cryptocurrency ticker symbol when prompted:

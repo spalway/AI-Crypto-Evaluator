@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+env:
+  OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+  CMC_API_KEY: ${{secrets.CMC_API_KEY}}
 jobs:
   run-script:
     runs-on: ubuntu-latest

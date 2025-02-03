@@ -95,7 +95,7 @@ Pull requests are welcome. For significant changes, open an issue first to discu
 MIT License. See `LICENSE` for details.
 
 ## Author
-[Your Name] - [Your GitHub Profile]
+Akshanth Palway - [Linkedin](https://www.linkedin.com/in/apalway/)
 
 ---
 

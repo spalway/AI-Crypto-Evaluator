@@ -7,11 +7,10 @@ Original file is located at
     https://colab.research.google.com/drive/1gxJms4PtfSfApFdB2wy2sJg5IdQBaBxz
 """
 
-# -*- coding: utf-8 -*-
-
-import os
+#import os
 import requests
 import openai
+import os
 from dotenv import load_dotenv
 
 # Load environment variables from .env file (for local testing)

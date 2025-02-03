@@ -20,7 +20,7 @@
 
 ### 1. Clone the Repository
 ```sh
-$ git clone https://github.com/your-username/AI-Crypto-Evaluator.git
+$ git clone https://github.com/spalway/AI-Crypto-Evaluator.git
 $ cd AI-Crypto-Evaluator
 ```
 

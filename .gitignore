@@ -1,0 +1,12 @@
+# Ignore environment files containing API keys
+.env
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore system files
+.DS_Store
+.vscode/

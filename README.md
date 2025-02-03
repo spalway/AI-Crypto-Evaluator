@@ -1,7 +1,7 @@
 # 🚀 AI Crypto Evaluator
 
-![image](https://github.com/user-attachments/assets/dfcf4736-aba9-4db1-9529-615d360d7a4c)
-![image](https://github.com/user-attachments/assets/9dfd1498-8acf-43c6-92ed-34245863230d)
+![image](https://github.com/user-attachments/assets/a33acf76-4fca-4921-a490-4c5137a08d80) ![image](https://github.com/user-attachments/assets/9dfd1498-8acf-43c6-92ed-34245863230d)
+
 
 
 ## Overview

@@ -1,5 +1,5 @@
 # Ignore environment files containing API keys
-.env
+OPENAI_API_KEY.env
 
 # Ignore compiled Python files
 __pycache__/

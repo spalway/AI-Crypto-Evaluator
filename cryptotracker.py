@@ -17,12 +17,12 @@ from dotenv import load_dotenv
 # Load environment variables from .env file (for local testing)
 load_dotenv()
 
-# Fetch API keys from GitHub Secrets if running in GitHub Actions
+# Fetch API keys from GitHub Secrets or local .env file
 api_key = os.getenv("OPENAI_API_KEY")
 cmc_api_key = os.getenv("CMC_API_KEY")
 
 if not api_key or not cmc_api_key:
-    raise ValueError("API keys not found. Ensure they are set in GitHub Secrets or in a local .env file.")
+    raise ValueError("API keys not found. Ensure they are stored in GitHub Secrets or in a local .env file.")
 
 # Initialize OpenAI Client
 openai.api_key = api_key
@@ -61,8 +61,6 @@ class CryptoAssistant:
             circulating_supply = "Unavailable"
 
         prompt = f"""
-
-
         Provide information about the cryptocurrency {ticker} in exactly this format:
 
         Developer: "Name of the developer or team behind the coin"
@@ -78,10 +76,8 @@ class CryptoAssistant:
         Future Analysis:
         - "Predicted trends based on market behavior and global events"
         - "Potential risks and opportunities"
-
-        Please ensure all responses strictly follow this format.\
-
-        """
+        
+        Please ensure all responses strictly follow this format."""
 
         try:
             response = self.client.chat.completions.create(
@@ -101,24 +97,37 @@ class CryptoAssistant:
 def main():
     """Main execution function with error handling."""
     print("Welcome to the Cryptocurrency Assistant!")
-    print("Enter 'quit' to exit the program.")
+    
+    # Check if running in GitHub Actions (CI/CD environment)
+    is_github_actions = os.getenv("GITHUB_ACTIONS") == "true"
+    
+    if is_github_actions:
+        # Automatically set a default ticker for GitHub Actions (e.g., BTC)
+        ticker_symbol = "BTC"
+        print(f"Running in GitHub Actions - Using default ticker: {ticker_symbol}")
+    else:
+        print("Enter 'quit' to exit the program.")
+        ticker_symbol = input("\nEnter the cryptocurrency ticker symbol (e.g., XRP, BTC, ETH): ").strip().upper()
 
     assistant = CryptoAssistant()
 
     while True:
-        ticker_symbol = input("\nEnter the cryptocurrency ticker symbol (e.g., XRP, BTC, ETH): ").strip().upper()
-
         if ticker_symbol.lower() == 'quit':
             print("Thank you for using the CryptoTracker Assistant!")
-            print("https://www.linkedin.com/in/apalway/")
             break
-
+        
         try:
             details = assistant.get_crypto_details(ticker_symbol)
             print("\nCrypto Details:\n")
             print(details)
         except Exception as e:
             print(f"An error occurred: {e}")
+        
+        if is_github_actions:
+            break  # Exit after one run in GitHub Actions
+
+        # Ask for the next input if running locally
+        ticker_symbol = input("\nEnter the cryptocurrency ticker symbol (e.g., XRP, BTC, ETH): ").strip().upper()
 
 if __name__ == "__main__":
     main()

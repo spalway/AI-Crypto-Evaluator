@@ -13,27 +13,32 @@ Original file is located at
 !pip show openai
 !pip install python-dotenv
 
+# -*- coding: utf-8 -*-
+
 import os
 import requests
 import openai
 from dotenv import load_dotenv
 
-# Load environment variables from a .env file
+# Load environment variables from .env file (for local testing)
 load_dotenv()
+
+# Fetch API keys from GitHub Secrets if running in GitHub Actions
+api_key = os.getenv("OPENAI_API_KEY")
+cmc_api_key = os.getenv("CMC_API_KEY")
+
+if not api_key or not cmc_api_key:
+    raise ValueError("API keys not found. Ensure they are set in GitHub Secrets or in a local .env file.")
+
+# Initialize OpenAI Client
+openai.api_key = api_key
 
 class CryptoAssistant:
     """A class to handle cryptocurrency information retrieval using OpenAI's API and CoinMarketCap API."""
 
     def __init__(self):
         """Initialize the CryptoAssistant with proper client configuration."""
-        api_key = os.getenv("OPENAI_API_KEY")
-        cmc_api_key = os.getenv("CMC_API_KEY")
-        if not api_key:
-            raise ValueError("OpenAI API key not found. Ensure the .env file is correctly set and loaded.")
-        if not cmc_api_key:
-            raise ValueError("CoinMarketCap API key not found. Ensure the .env file is correctly set and loaded.")
-
-        self.client = openai.OpenAI(api_key=api_key)
+        self.client = openai.Client()
         self.cmc_api_key = cmc_api_key
 
     def get_crypto_details(self, ticker: str) -> str:
@@ -62,6 +67,8 @@ class CryptoAssistant:
             circulating_supply = "Unavailable"
 
         prompt = f"""
+
+
         Provide information about the cryptocurrency {ticker} in exactly this format:
 
         Developer: "Name of the developer or team behind the coin"
@@ -78,7 +85,8 @@ class CryptoAssistant:
         - "Predicted trends based on market behavior and global events"
         - "Potential risks and opportunities"
 
-        Please ensure all responses strictly follow this format.
+        Please ensure all responses strictly follow this format.\
+
         """
 
         try:
@@ -91,9 +99,7 @@ class CryptoAssistant:
                 max_tokens=500,
                 temperature=0.7
             )
-
             return response.choices[0].message.content
-
         except Exception as e:
             print(f"Detailed error: {str(e)}")  # Helpful for debugging
             raise Exception(f"Error getting crypto details: {str(e)}")

@@ -1,5 +1,9 @@
 # 🚀 AI Crypto Evaluator
 
+![image](https://github.com/user-attachments/assets/dfcf4736-aba9-4db1-9529-615d360d7a4c)
+![image](https://github.com/user-attachments/assets/9dfd1498-8acf-43c6-92ed-34245863230d)
+
+
 ## Overview
 **AI Crypto Evaluator** is an advanced cryptocurrency analysis tool that leverages **OpenAI's GPT-4 Turbo** and **CoinMarketCap API** to provide real-time cryptocurrency insights. It fetches live market data and combines it with AI-driven analysis to present:
 - **Developer Information**
@@ -14,9 +18,7 @@
 - **Secure API Handling:** Stores API keys securely via **GitHub Secrets** or `.env` files.
 - **Error Handling:** Gracefully manages errors in API requests and OpenAI interactions.
 - **User-Friendly Interface:** CLI-based input for quick evaluations.
-![image](https://github.com/user-attachments/assets/9dd00208-40be-4cac-b329-91b0188dcc17)
 
-![image](https://github.com/user-attachments/assets/8ed576ef-dc37-4192-8db4-574e462c3a69)
 
 ## Installation & Setup
 

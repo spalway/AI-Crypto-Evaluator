@@ -7,12 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1gxJms4PtfSfApFdB2wy2sJg5IdQBaBxz
 """
 
-!pip install requests
-!pip install openai
-!pip install --upgrade openai
-!pip show openai
-!pip install python-dotenv
-
 # -*- coding: utf-8 -*-
 
 import os

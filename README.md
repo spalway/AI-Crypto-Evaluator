@@ -1,7 +1,5 @@
-# 🚀 AI Crypto Evaluator
-
-![image](https://github.com/user-attachments/assets/064b8604-5679-44cc-acd7-9e0a4a41d679)
-
+# AI Crypto Evaluator
+![image](https://github.com/user-attachments/assets/145eb3cd-27f3-4da3-b00a-8860c4332c4a)
 
 ## Overview
 **AI Crypto Evaluator** is an advanced cryptocurrency analysis tool that leverages **OpenAI's GPT-4 Turbo** and **CoinMarketCap API** to provide real-time cryptocurrency insights. It fetches live market data and combines it with AI-driven analysis to present:
@@ -17,7 +15,6 @@
 - **Secure API Handling:** Stores API keys securely via **GitHub Secrets** or `.env` files.
 - **Error Handling:** Gracefully manages errors in API requests and OpenAI interactions.
 - **User-Friendly Interface:** CLI-based input for quick evaluations.
-
 
 ## Installation & Setup
 
@@ -35,14 +32,16 @@ $ pip install -r requirements.txt
 ### 3. Set Up API Keys
 The project requires **OpenAI API** and **CoinMarketCap API** keys. You can store them either locally or via GitHub Secrets.
 
-#### **Option 1: Local `.env` File**
-Create a `.env` file in the project root and add:
-```plaintext
-OPENAI_API_KEY=your_openai_api_key_here
-CMC_API_KEY=your_coinmarketcap_api_key_here
-```
+#### **GitHub Secrets (Preconfigured for Users)**
+API keys have already been set up as **GitHub Secrets**, so users can run the application without manual configuration. No need to create a `.env` file manually.
 
-#### **Option 2: GitHub Secrets (Recommended for CI/CD)**
+To verify or update the keys:
+1. Go to **Settings** → **Secrets and variables** → **Actions** in your GitHub repository.
+2. Ensure the following secrets are set:
+   - **OPENAI_API_KEY** → Your OpenAI API key
+   - **CMC_API_KEY** → Your CoinMarketCap API key
+
+The script will automatically fetch these keys when executed.
 1. Go to **Settings** → **Secrets and variables** → **Actions** in your GitHub repository.
 2. Add the following secrets:
    - **OPENAI_API_KEY** → Your OpenAI API key
@@ -94,7 +93,7 @@ Pull requests are welcome. For significant changes, open an issue first to discu
 MIT License. See `LICENSE` for details.
 
 ## Author
-Akshanth Palway - [Linkedin](https://www.linkedin.com/in/apalway/)
+[Akshanth Palway] - [[Linkedin](https://www.linkedin.com/in/apalway/)]
 
 ---
 

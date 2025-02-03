@@ -50,7 +50,7 @@ The script will automatically fetch these keys when executed.
 ## Usage
 Run the script using:
 ```sh
-$ python crypto_assistant.py
+$ python cryptotracker.py
 ```
 You will be prompted to enter a **cryptocurrency ticker symbol** (e.g., BTC, ETH). The tool will fetch data, analyze trends, and present structured insights.
 

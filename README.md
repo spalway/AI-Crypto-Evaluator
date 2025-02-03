@@ -1,108 +1,101 @@
 # 🚀 AI Crypto Evaluator
 
-AI Crypto Evaluator streamlines cryptocurrency analysis by leveraging OpenAI's GPT API to generate structured insights based on user input.
+## Overview
+**AI Crypto Evaluator** is an advanced cryptocurrency analysis tool that leverages **OpenAI's GPT-4 Turbo** and **CoinMarketCap API** to provide real-time cryptocurrency insights. It fetches live market data and combines it with AI-driven analysis to present:
+- **Developer Information**
+- **Current Price, Market Cap, and Circulating Supply**
+- **Important Historical Events**
+- **Recent News Highlights**
+- **Future Analysis & Predictions**
 
-When a user enters a cryptocurrency ticker, the program constructs a well-defined prompt that instructs GPT to return essential details, including the developer, current price, circulating supply, market capitalization, and significant historical events.
+## Features
+- **Real-Time Data:** Fetches live cryptocurrency data from **CoinMarketCap API**.
+- **AI-Powered Insights:** Uses **OpenAI GPT-4 Turbo** to generate intelligent market analysis.
+- **Secure API Handling:** Stores API keys securely via **GitHub Secrets** or `.env` files.
+- **Error Handling:** Gracefully manages errors in API requests and OpenAI interactions.
+- **User-Friendly Interface:** CLI-based input for quick evaluations.
+![image](https://github.com/user-attachments/assets/9dd00208-40be-4cac-b329-91b0188dcc17)
 
-By setting parameters like temperature and max tokens, the program ensures consistent and informative responses. Additionally, it incorporates error handling mechanisms to validate API keys, allowing users to enter their own key while providing a fallback option if needed.
+![image](https://github.com/user-attachments/assets/8ed576ef-dc37-4192-8db4-574e462c3a69)
 
-This seamless integration with GPT allows the AI Crypto Evaluator to function as a dynamic and user-friendly tool for retrieving cryptocurrency insights.
+## Installation & Setup
 
----
+### 1. Clone the Repository
+```sh
+$ git clone https://github.com/your-username/AI-Crypto-Evaluator.git
+$ cd AI-Crypto-Evaluator
+```
 
-## 📌 Features
+### 2. Install Dependencies
+```sh
+$ pip install -r requirements.txt
+```
 
-- ✔ Fetch accurate cryptocurrency data using OpenAI's API
-- ✔ User-provided API key support (with a fallback mechanism)
-- ✔ Error handling with retry prompts for invalid API keys
-- ✔ Simple CLI-based interaction
+### 3. Set Up API Keys
+The project requires **OpenAI API** and **CoinMarketCap API** keys. You can store them either locally or via GitHub Secrets.
 
----
+#### **Option 1: Local `.env` File**
+Create a `.env` file in the project root and add:
+```plaintext
+OPENAI_API_KEY=your_openai_api_key_here
+CMC_API_KEY=your_coinmarketcap_api_key_here
+```
 
-## 🛠 Installation
+#### **Option 2: GitHub Secrets (Recommended for CI/CD)**
+1. Go to **Settings** → **Secrets and variables** → **Actions** in your GitHub repository.
+2. Add the following secrets:
+   - **OPENAI_API_KEY** → Your OpenAI API key
+   - **CMC_API_KEY** → Your CoinMarketCap API key
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/yourusername/ai-crypto-evaluator.git
-   cd cryptotracker.py
-   ```
+## Usage
+Run the script using:
+```sh
+$ python crypto_assistant.py
+```
+You will be prompted to enter a **cryptocurrency ticker symbol** (e.g., BTC, ETH). The tool will fetch data, analyze trends, and present structured insights.
 
-2. **Install Dependencies**  
-   Ensure you have Python 3.7+ installed, then run:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Example Output
+```
+Welcome to the Cryptocurrency Assistant!
+Enter 'quit' to exit the program.
 
-3. **Run the Program**
-   ```bash
-   python cryptotracker.py
-   ```
+Enter the cryptocurrency ticker symbol (e.g., XRP, BTC, ETH): BTC
 
----
+Crypto Details:
+Developer: "Bitcoin Core Team"
+Price: "45,000.00 USD"
+Circulating Supply: "19,200,000 BTC"
+Market Cap: "864,000,000,000 USD"
+Important events:
+- "Bitcoin halving event in 2024, reducing mining rewards."
+- "ETF approval in 2023 led to increased institutional investment."
+Recent News:
+- "Bitcoin reaches all-time high in Q1 2024."
+- "Regulatory discussions impact cryptocurrency adoption."
+Future Analysis:
+- "Expected price increase due to scarcity and adoption."
+- "Potential risks related to government regulations."
+```
 
-## 🔑 API Key Handling
+## File Structure
+```
+AI-Crypto-Evaluator/
+│-- crypto_assistant.py  # Main program
+│-- .gitignore           # Prevents sensitive files from being tracked
+│-- README.md            # Project documentation
+│-- requirements.txt     # Required dependencies
+```
 
-- Upon startup, the program prompts the user to enter their OpenAI API key.
-- If the key is invalid, it falls back to a hardcoded backup API key.
-- If both keys fail, the program will prompt the user to re-enter a valid API key.
+## Contributing
+Pull requests are welcome. For significant changes, open an issue first to discuss your ideas.
 
----
+## License
+MIT License. See `LICENSE` for details.
 
-## 🚀 Usage
-
-1. Run the script:
-   ```bash
-   python cryptotracker.py
-   ```
-
-2. Enter the cryptocurrency ticker symbol when prompted:
-   ```
-   Enter the cryptocurrency ticker symbol (e.g., BTC, ETH, XRP): BTC
-   ```
-
-3. Receive detailed insights:
-   ```
-   Crypto Details:
-
-   Developer: "Satoshi Nakamoto"
-   Price: "$42,500"
-   Circulating Supply: "19.5 million BTC"
-   Market Cap: "$830 billion"
-   Important events:
-   - "Bitcoin halving event in April 2024"
-   - "Increased institutional adoption"
-   ```
-
----
-
-## ⚠️ Error Handling
-
-- If an invalid API key is provided, the program retries with the backup key.
-- If errors persist, the program prompts the user to re-enter a valid API key.
-- Detailed error messages are displayed for debugging.
-
----
-
-## 🤝 Contributing
-
-Feel free to fork the repository, make improvements, and submit pull requests.
-
-1. Fork the repo
-2. Create your feature branch (`git checkout -b feature-name`)
-3. Commit your changes (`git commit -m 'Add new feature'`)
-4. Push to the branch (`git push origin feature-name`)
-5. Open a pull request
-
----
-
-## 📬 Contact
-Developed by: Akshanth Palway
-Southern Methodist University
-For issues, questions, or suggestions, feel free to reach out via [LinkedIn](https://www.linkedin.com/in/apalway) or email.
+## Author
+[Your Name] - [Your GitHub Profile]
 
 ---
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
+**Now you’re ready to evaluate cryptocurrencies with AI-powered insights! 🚀**
 

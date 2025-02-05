@@ -3,9 +3,9 @@
 
 ## Google Collab Link Below (If you are having issues running on your local environment) 
 *Upload the ENV template from Github into content/api.env in Google Collab*
-*CMC API is already provided, you will only need an OpenAI API which you can obtain at [platform.openai.com]*
-[![If you are having trouble running the program on your local environment, click here for the Google Colab version](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1dZwECFGlu2HNV7DC2dbvBaLtrYTIkY3s?usp=sharing)
+*CMC API is already provided, you will only need an OpenAI API which you can obtain at platform.openai.com*
 
+[![If you are having trouble running the program on your local environment, click here for the Google Colab version](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1dZwECFGlu2HNV7DC2dbvBaLtrYTIkY3s?usp=sharing)
 
 ## Overview
 **AI Crypto Evaluator** is an advanced cryptocurrency analysis tool that leverages **OpenAI's GPT-4 Turbo** and **CoinMarketCap API** to provide real-time cryptocurrency insights. It fetches live market data and combines it with AI-driven analysis to present:
